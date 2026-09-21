@@ -8,7 +8,6 @@ import DoctorDetails from "../pages/DoctorDetails";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 export default function AppRoutes() {
-
   return (
     <Routes>
       <Route
@@ -21,41 +20,49 @@ export default function AppRoutes() {
           )
         }
       />
-  <Route
-  path="/doctors"
-  element={
-    localStorage.getItem("isLoggedIn") === "true"
-      ? <Doctors />
-      : <Navigate to="/login" />
-  }
-/>
+      <Route
+        path="/doctors"
+        element={
+          localStorage.getItem("isLoggedIn") === "true" ? (
+            <Doctors />
+          ) : (
+            <Navigate to="/login" />
+          )
+        }
+      />
 
-<Route
-  path="/doctor/:id"
-  element={
-    localStorage.getItem("isLoggedIn") === "true"
-      ? <DoctorDetails />
-      : <Navigate to="/login" />
-  }
-/>
+      <Route
+        path="/doctor/:id"
+        element={
+          localStorage.getItem("isLoggedIn") === "true" ? (
+            <DoctorDetails />
+          ) : (
+            <Navigate to="/login" />
+          )
+        }
+      />
 
-<Route
-  path="/appointment"
-  element={
-    localStorage.getItem("isLoggedIn") === "true"
-      ? <Appointment />
-      : <Navigate to="/login" />
-  }
-/>
+      <Route
+        path="/appointment"
+        element={
+          localStorage.getItem("isLoggedIn") === "true" ? (
+            <Appointment />
+          ) : (
+            <Navigate to="/login" />
+          )
+        }
+      />
       <Route path="/login" element={<Login />} />
       <Route
-  path="/register"
-  element={
-    localStorage.getItem("isLoggedIn") === "true"
-      ? <Navigate to="/" />
-      : <Register />
-  }
-/>
+        path="/register"
+        element={
+          localStorage.getItem("isLoggedIn") === "true" ? (
+            <Navigate to="/" />
+          ) : (
+            <Register />
+          )
+        }
+      />
     </Routes>
   );
 }

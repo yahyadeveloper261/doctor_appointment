@@ -6,31 +6,30 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
- 
+
   const navigate = useNavigate();
   const handleSubmit = (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!email.trim()) return alert("Please enter your email.");
-  if (!password.trim()) return alert("Please enter your password.");
+    if (!email.trim()) return alert("Please enter your email.");
+    if (!password.trim()) return alert("Please enter your password.");
 
-  const users = JSON.parse(localStorage.getItem("store")) || [];
+    const users = JSON.parse(localStorage.getItem("store")) || [];
 
-  const user = users.find(
-    (user) =>
-      user.email === email.trim().toLowerCase() &&
-      user.password === password
-  );
+    const user = users.find(
+      (user) =>
+        user.email === email.trim().toLowerCase() && user.password === password,
+    );
 
-  if (user) {
-    localStorage.setItem("isLoggedIn", "true");
-    localStorage.setItem("currentuser", JSON.stringify(user));
+    if (user) {
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("currentuser", JSON.stringify(user));
 
-    navigate("/");
-  } else {
-    alert("Invalid email or password.");
-  }
-};
+      navigate("/");
+    } else {
+      alert("Invalid email or password.");
+    }
+  };
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4 py-10">
       <div className="w-full max-w-md">
@@ -134,7 +133,6 @@ export default function Login() {
             >
               Create Account
             </button>
-           
           </p>
         </div>
 

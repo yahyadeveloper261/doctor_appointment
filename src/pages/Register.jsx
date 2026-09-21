@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 
 export default function Register() {
@@ -6,14 +5,16 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [store, setStore] = useState(()=>{
-    return JSON.parse(localStorage.getItem("store"))||[]
+  const [store, setStore] = useState(() => {
+    return JSON.parse(localStorage.getItem("store")) || [];
   });
- useEffect(()=>{
-  localStorage.setItem("store",JSON.stringify(store))
- },[store])
- 
- const exitUser=store.some((item)=>item.email.toLowerCase()===email.trim().toLowerCase());
+  useEffect(() => {
+    localStorage.setItem("store", JSON.stringify(store));
+  }, [store]);
+
+  const exitUser = store.some(
+    (item) => item.email.toLowerCase() === email.trim().toLowerCase(),
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,8 +22,15 @@ export default function Register() {
     if (!name.trim()) return alert("Please enter your name.");
     if (!email.trim()) return alert("Please enter your email.");
     if (!password.trim()) return alert("Please enter your password.");
-if(exitUser) return alert("alreay email exit")
-    setStore((prev) => [...prev, { name, email, password }]);
+    if (exitUser) return alert("alreay email exit");
+    setStore((prev) => [
+      ...prev,
+      {
+        name: name.trim(),
+        email: email.trim().toLowerCase(),
+        password,
+      },
+    ]);
 
     setName("");
     setEmail("");
@@ -31,16 +39,11 @@ if(exitUser) return alert("alreay email exit")
 
   return (
     <div className="min-h-screen bg-white px-4 py-10">
-
       <div className="mx-auto max-w-5xl">
-
         {/* Register Form */}
         <div className="mx-auto max-w-md rounded-2xl border border-gray-200 bg-white p-8 shadow-xl">
-
           <div className="mb-7 text-center">
-            <h1 className="text-3xl font-bold text-gray-900">
-              Create Account
-            </h1>
+            <h1 className="text-3xl font-bold text-gray-900">Create Account</h1>
 
             <p className="mt-2 text-sm text-gray-500">
               Register your account to get started
@@ -48,7 +51,6 @@ if(exitUser) return alert("alreay email exit")
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
-
             {/* Name */}
             <div>
               <label className="mb-2 block text-sm font-semibold text-gray-700">
@@ -111,14 +113,12 @@ if(exitUser) return alert("alreay email exit")
             >
               Register
             </button>
-
           </form>
         </div>
 
         {/* Store */}
         {store.length > 0 && (
           <div className="mt-10">
-
             <div className="mb-5">
               <h2 className="text-2xl font-bold text-gray-900">
                 Registered Users
@@ -130,13 +130,11 @@ if(exitUser) return alert("alreay email exit")
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-
               {store.map((item, index) => (
                 <div
                   key={index}
                   className="rounded-2xl border border-gray-200 bg-white p-5 shadow-md transition hover:-translate-y-1 hover:shadow-xl"
                 >
-
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-lg font-bold text-blue-600">
                     {item.name.charAt(0).toUpperCase()}
                   </div>
@@ -145,23 +143,17 @@ if(exitUser) return alert("alreay email exit")
                     {item.name}
                   </h3>
 
-                  <p className="mt-1 text-sm text-gray-500">
-                    {item.email}
-                  </p>
+                  <p className="mt-1 text-sm text-gray-500">{item.email}</p>
 
                   <div className="mt-4 rounded-lg bg-gray-50 px-3 py-2 text-sm text-gray-500">
                     Password: ••••••••
                   </div>
-
                 </div>
               ))}
-
             </div>
           </div>
         )}
-
       </div>
     </div>
   );
 }
-
