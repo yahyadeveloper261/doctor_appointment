@@ -1,13 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+
 export default function Login() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
 
-  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -25,7 +24,7 @@ export default function Login() {
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("currentuser", JSON.stringify(user));
 
-      navigate("/");
+     window.location.href = "/";
     } else {
       alert("Invalid email or password.");
     }

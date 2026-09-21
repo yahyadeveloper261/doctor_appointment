@@ -26,8 +26,8 @@ export default function Register() {
     setStore((prev) => [
       ...prev,
       {
-        name: name.trim(),
-        email: email.trim().toLowerCase(),
+        name,
+        email,
         password,
       },
     ]);
@@ -36,6 +36,7 @@ export default function Register() {
     setEmail("");
     setPassword("");
   };
+
 
   return (
     <div className="min-h-screen bg-white px-4 py-10">
@@ -146,7 +147,7 @@ export default function Register() {
                   <p className="mt-1 text-sm text-gray-500">{item.email}</p>
 
                   <div className="mt-4 rounded-lg bg-gray-50 px-3 py-2 text-sm text-gray-500">
-                    Password: ••••••••
+                    Password: •••••••
                   </div>
                 </div>
               ))}

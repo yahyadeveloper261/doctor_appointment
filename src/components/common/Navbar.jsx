@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { FaStethoscope, FaBars, FaXmark } from "react-icons/fa6";
 
 const navLinks = [
@@ -11,10 +11,11 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-  const navigate = useNavigate();
   const logout = () => {
     localStorage.removeItem("isLoggedIn");
-    navigate("/login");
+    localStorage.removeItem("currentuser");
+
+    window.location.href = "/login";
   };
 
   const linkClasses = ({ isActive }) =>
