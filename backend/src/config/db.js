@@ -3,7 +3,7 @@ const dbConnection = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URL);
     console.log(" DataBase Successfully Connected");
-  } catch {
+  } catch(error) {
    console.error("Database connection error:", error.message);
   }
 };
