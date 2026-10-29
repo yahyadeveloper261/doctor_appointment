@@ -23,9 +23,10 @@ app.use("/api", doctorRoutes);
 app.use("/api", appointmentRoutes);
 app.use("/api", userRoutes);
 
-const port = process.env.PORT;
-const host = process.env.HOST;
-app.listen(port, host, () => {
-  console.log(`Server is running at http://${host}:${port}`);
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server is running on port ${PORT}`);
 });
 dbConnection();
