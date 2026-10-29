@@ -9,15 +9,17 @@ import userRoutes from "./routes/userRoutes.js";
 const app = express();
 
 
+
 app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://doctor-appointment-kcruxwjh4-users-projects-bffa12e7.vercel.app",
+      "https://doctor-appointment-q1fsuupkv-users-projects-bffa12e7.vercel.app",
     ],
     credentials: true,
   })
 );
+
 
 
 app.get("/", (req, res) => {
