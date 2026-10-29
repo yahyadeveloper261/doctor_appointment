@@ -10,10 +10,14 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://doctor-appointment-two-kappa.vercel.app",
+    ],
     credentials: true,
-  })
+  }),
 );
+
 app.get("/", (req, res) => {
   res.send("Backend is running");
 });
@@ -22,7 +26,6 @@ app.use(cookieParser());
 app.use("/api", doctorRoutes);
 app.use("/api", appointmentRoutes);
 app.use("/api", userRoutes);
-
 
 const PORT = process.env.PORT || 5000;
 
