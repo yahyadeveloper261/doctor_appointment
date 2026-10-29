@@ -8,15 +8,17 @@ import appointmentRoutes from "./routes/appointmentRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 const app = express();
 
+
 app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://doctor-appointment-two-kappa.vercel.app",
+      "https://doctor-appointment-kcruxwjh4-users-projects-bffa12e7.vercel.app",
     ],
     credentials: true,
-  }),
+  })
 );
+
 
 app.get("/", (req, res) => {
   res.send("Backend is running");
