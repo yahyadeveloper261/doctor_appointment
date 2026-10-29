@@ -14,6 +14,9 @@ app.use(
     credentials: true,
   })
 );
+app.get("/", (req, res) => {
+  res.send("Backend is running");
+});
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api", doctorRoutes);
