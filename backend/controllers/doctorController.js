@@ -46,7 +46,6 @@ const registerDoctor = async (req, res) => {
       password,
       specialty,
       city,
-      image,
       fee,
       experience,
     } = req.body;
@@ -262,8 +261,8 @@ const loginDoctor = async (req, res) => {
     // 6. Set refresh token cookie
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      secure:true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: "/",
     });
@@ -341,8 +340,8 @@ const refreshDoctorAccessToken = async (req, res) => {
     // 8. Naya Refresh Token cookie mein set karo
     res.cookie("refreshToken", newRefreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      secure:true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: "/",
     });
