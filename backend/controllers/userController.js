@@ -105,8 +105,8 @@ const loginUser = async (req, res) => {
     // 7. Asli Refresh Token cookie mein bhejo
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      secure:true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: "/",
     });
@@ -177,10 +177,11 @@ const refreshAccessToken = async (req, res) => {
     await user.save();
 
     // 8. Naya Refresh Token cookie mein set karo
+
     res.cookie("refreshToken", newRefreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: "/",
     });
