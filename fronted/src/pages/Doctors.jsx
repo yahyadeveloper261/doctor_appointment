@@ -89,7 +89,7 @@ const specialty = searchParams.get("specialty") || "";
         </div>
       )}
       {/* Doctors Grid */}
-     <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+   <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 sm:grid-cols-2 min-[700px]:grid-cols-4">
         {doctors.map((doctor) => (
           <div
             key={doctor._id}
