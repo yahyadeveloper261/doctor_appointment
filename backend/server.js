@@ -14,7 +14,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://doctor-appointment-q1fsuupkv-users-projects-bffa12e7.vercel.app",
+      "https://doctor-appointment-two-kappa.vercel.app",
     ],
     credentials: true,
   })
